@@ -64,7 +64,7 @@ void RTC_Init(void)
         RTC_WaitForLastTask();
 
         /* Set the RTC time */
-        RTC_SetTime(2018, 8, 8, 8, 8, 0);
+        RTC_SetTime(2024, 5, 20, 13, 14, 20);
         /* Wait until last write operation on RTC registers has finished */
         RTC_WaitForLastTask();
 

@@ -16,11 +16,12 @@ using namespace Page;
 
 void LiveMapView::Create(lv_obj_t* root, uint32_t tileNum)
 {
-    lv_obj_set_style_bg_color(root, lv_color_white(), 0);
+    lv_obj_set_style_bg_color(root, lv_color_black(), 0);
 
     lv_obj_t* label = lv_label_create(root);
     lv_obj_center(label);
     lv_obj_set_style_text_font(label, ResourcePool::GetFont("bahnschrift_17"), 0);
+    lv_obj_set_style_text_color(label, lv_color_black(), 0);
     lv_label_set_text(label, "LOADING...");
     ui.labelInfo = label;
 

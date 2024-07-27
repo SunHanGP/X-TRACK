@@ -106,19 +106,19 @@ static void Display_SPI_DMA_Init()
     DMA_InitType DMA_InitStructure;
     DMA_DefaultInitParaConfig(&DMA_InitStructure);
 
-    DMA_InitStructure.DMA_Mode = DMA_MODE_NORMAL;  //¹¤×÷ÔÚÕı³£»º´æÄ£Ê½
-    DMA_InitStructure.DMA_MTOM = DMA_MEMTOMEM_DISABLE;  //DMAÍ¨µÀ Ã»ÓĞÉèÖÃÎªÄÚ´æµ½ÄÚ´æ´«Êä
-    DMA_InitStructure.DMA_Direction = DMA_DIR_PERIPHERALDST;  //Êı¾İ´«Êä·½Ïò£¬´ÓÄÚ´æ¶ÁÈ¡·¢ËÍµ½ÍâÉè
-    DMA_InitStructure.DMA_Priority = DMA_PRIORITY_MEDIUM; //DMAÍ¨µÀ ÖĞÓÅÏÈ¼¶
+    DMA_InitStructure.DMA_Mode = DMA_MODE_NORMAL;  //å·¥ä½œåœ¨æ­£å¸¸ç¼“å­˜æ¨¡å¼
+    DMA_InitStructure.DMA_MTOM = DMA_MEMTOMEM_DISABLE;  //DMAé€šé“ æ²¡æœ‰è®¾ç½®ä¸ºå†…å­˜åˆ°å†…å­˜ä¼ è¾“
+    DMA_InitStructure.DMA_Direction = DMA_DIR_PERIPHERALDST;  //æ•°æ®ä¼ è¾“æ–¹å‘ï¼Œä»å†…å­˜è¯»å–å‘é€åˆ°å¤–è®¾
+    DMA_InitStructure.DMA_Priority = DMA_PRIORITY_MEDIUM; //DMAé€šé“ ä¸­ä¼˜å…ˆçº§
 
-    DMA_InitStructure.DMA_MemoryBaseAddr = (uint32_t)0;  //DMAÄÚ´æ»ùµØÖ·
-    DMA_InitStructure.DMA_MemoryInc = DMA_MEMORYINC_ENABLE;  //ÄÚ´æµØÖ·¼Ä´æÆ÷×ÔÔö
-    DMA_InitStructure.DMA_MemoryDataWidth = DMA_MEMORYDATAWIDTH_BYTE; //Êı¾İ¿í¶È
-    DMA_InitStructure.DMA_BufferSize = DISP_DMA_MAX_SIZE;  //DMAÍ¨µÀµÄDMA»º´æµÄ´óĞ¡
+    DMA_InitStructure.DMA_MemoryBaseAddr = (uint32_t)0;  //DMAå†…å­˜åŸºåœ°å€
+    DMA_InitStructure.DMA_MemoryInc = DMA_MEMORYINC_ENABLE;  //å†…å­˜åœ°å€å¯„å­˜å™¨è‡ªå¢
+    DMA_InitStructure.DMA_MemoryDataWidth = DMA_MEMORYDATAWIDTH_BYTE; //æ•°æ®å®½åº¦
+    DMA_InitStructure.DMA_BufferSize = DISP_DMA_MAX_SIZE;  //DMAé€šé“çš„DMAç¼“å­˜çš„å¤§å°
 
-    DMA_InitStructure.DMA_PeripheralBaseAddr = (uint32_t)(&(SPI1->DT));  //DMAÍâÉèSPI»ùµØÖ·
-    DMA_InitStructure.DMA_PeripheralInc = DMA_PERIPHERALINC_DISABLE;  //ÍâÉèµØÖ·¼Ä´æÆ÷²»±ä
-    DMA_InitStructure.DMA_PeripheralDataWidth = DMA_PERIPHERALDATAWIDTH_BYTE;  //Êı¾İ¿í¶È
+    DMA_InitStructure.DMA_PeripheralBaseAddr = (uint32_t)(&(SPI1->DT));  //DMAå¤–è®¾SPIåŸºåœ°å€
+    DMA_InitStructure.DMA_PeripheralInc = DMA_PERIPHERALINC_DISABLE;  //å¤–è®¾åœ°å€å¯„å­˜å™¨ä¸å˜
+    DMA_InitStructure.DMA_PeripheralDataWidth = DMA_PERIPHERALDATAWIDTH_BYTE;  //æ•°æ®å®½åº¦
 
     DMA_Init(DISP_DMA_CHANNEL, &DMA_InitStructure);
 
@@ -149,7 +149,7 @@ void HAL::Display_Init()
     Display_GetFPS(&screen, 50);
     while(1);
 #endif
-    HAL::Backlight_SetGradual(1000, 1000);
+    HAL::Backlight_SetGradual((CONFIG_BACKLIGHT_MIN + CONFIG_BACKLIGHT_MAX) / 2, 1000);
     Serial.println("success");
 }
 

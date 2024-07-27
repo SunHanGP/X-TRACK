@@ -24,6 +24,7 @@ void HAL::FaultHandle_Init()
         VERSION_HARDWARE,
         VERSION_SOFTWARE " " __DATE__
     );
+    Serial.println("Fault: Init...success");
 }
 
 void cmb_printf(const char *__restrict __format, ...)

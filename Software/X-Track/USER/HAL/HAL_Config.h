@@ -31,15 +31,24 @@
 #define CONFIG_SENSOR_ENABLE        1
 
 #if CONFIG_SENSOR_ENABLE
-#  define CONFIG_SENSOR_IMU_ENABLE  1
-#  define CONFIG_SENSOR_MAG_ENABLE  1
+#  define CONFIG_SENSOR_IMU_ENABLE       1  //陀螺仪
+#  define CONFIG_SENSOR_MAG_ENABLE       1  //磁力计
+#  define CONFIG_SENSOR_PRESSURE_ENABLE  0  //气压计
+#  define CONFIG_LIPO_FUEL_GAUGE_ENABLE  1  //电量计
 #endif
+
+/* Sensor model */
+#define CONFIG_IMU_MODEL_LSM6DSM 0
+#define CONFIG_IMU_MODEL_MPU6050 1
+#define CONFIG_MAG_MODEL_LIS3MDL 0
+#define CONFIG_MAG_MODEL_QMC6310 1
+
 
 #define NULL_PIN                    PD0
 
 /* Screen */
-#define CONFIG_SCREEN_CS_PIN        PB0
-#define CONFIG_SCREEN_DC_PIN        PA4
+#define CONFIG_SCREEN_CS_PIN        PA4
+#define CONFIG_SCREEN_DC_PIN        PB0
 #define CONFIG_SCREEN_RST_PIN       PA6
 #define CONFIG_SCREEN_SCK_PIN       PA5
 #define CONFIG_SCREEN_MOSI_PIN      PA7
@@ -47,7 +56,7 @@
 #define CONFIG_SCREEN_SPI           SPI
 
 #define CONFIG_SCREEN_HOR_RES       240
-#define CONFIG_SCREEN_VER_RES       240
+#define CONFIG_SCREEN_VER_RES       320
 
 /* Battery */
 #define CONFIG_BAT_DET_PIN          PA1
@@ -58,7 +67,7 @@
 
 /* GPS */
 #define CONFIG_GPS_SERIAL           Serial2
-#define CONFIG_GPS_USE_TRANSPARENT  0
+#define CONFIG_GPS_USE_TRANSPARENT  1
 #define CONFIG_GPS_BUF_OVERLOAD_CHK 0
 #define CONFIG_GPS_TX_PIN           PA3
 #define CONFIG_GPS_RX_PIN           PA2
@@ -78,8 +87,8 @@
 
 /* Power */
 #define CONFIG_POWER_EN_PIN         PA12
-#define CONFIG_POWER_WAIT_TIME      1000
-#define CONFIG_POWER_SHUTDOWM_DELAY 5000
+#define CONFIG_POWER_WAIT_TIME      500
+#define CONFIG_POWER_SHUTDOWM_DELAY 3500
 #define CONFIG_POWER_BATT_CHG_DET_PULLUP    true
 
 /* Debug USART */
@@ -101,6 +110,11 @@
 /* Show Stack & Heap Info */
 #define CONFIG_SHOW_STACK_INFO      0
 #define CONFIG_SHOW_HEAP_INFO       0
+
+/* Backlight Config */
+#define CONFIG_BACKLIGHT_MIN        150  // Range [0, 1000]
+#define CONFIG_BACKLIGHT_MAX        1000 // Range [0, 1000]
+#define CONFIG_BACKLIGHT_CTRL_RANGE 60   // minute Range[1, 120]
 
 /* Use Watch Dog */
 #define CONFIG_WATCH_DOG_ENABLE     1

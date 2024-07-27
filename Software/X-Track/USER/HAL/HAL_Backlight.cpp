@@ -2,9 +2,9 @@
 #include "lvgl/lvgl.h"
 
 /**
-  * @brief  ±³¹âÁÁ¶È½¥±ä£¬ÊÜlv_anim¿ØÖÆ
-  * @param  obj:ÎŞÓÃ
-  * @param  brightness:ÁÁ¶ÈÖµ
+  * @brief  èƒŒå…‰äº®åº¦æ¸å˜ï¼Œå—lv_animæ§åˆ¶
+  * @param  obj:æ— ç”¨
+  * @param  brightness:äº®åº¦å€¼
   * @retval None
   */
 static void Backlight_AnimCallback(void * obj, int32_t brightness)
@@ -13,21 +13,22 @@ static void Backlight_AnimCallback(void * obj, int32_t brightness)
 }
 
 /**
-  * @brief  ±³¹â³õÊ¼»¯
-  * @param  ÎŞ
-  * @retval ÎŞ
+  * @brief  èƒŒå…‰åˆå§‹åŒ–
+  * @param  æ— 
+  * @retval æ— 
   */
 void HAL::Backlight_Init()
 {
-    /*PWM³õÊ¼»¯£¬1000¼¶£¬20KHzÆµÂÊ*/
+    /*PWMåˆå§‹åŒ–ï¼Œ1000çº§ï¼Œ20KHzé¢‘ç‡*/
     PWM_Init(CONFIG_SCREEN_BLK_PIN, 1000, 20000);
     Backlight_SetValue(0);
+    Serial.println("Backlight: Init...success");
 }
 
 /**
-  * @brief  ±³¹âÉèÖÃ£¬½¥±äĞ§¹û
-  * @param  target:Ä¿±êÁÁ¶È(0~1000 -> 0~100%)
-  * @retval ÎŞ
+  * @brief  èƒŒå…‰è®¾ç½®ï¼Œæ¸å˜æ•ˆæœ
+  * @param  target:ç›®æ ‡äº®åº¦(0~1000 -> 0~100%)
+  * @retval æ— 
   */
 void HAL::Backlight_SetGradual(uint16_t target, uint16_t time)
 {
@@ -42,9 +43,9 @@ void HAL::Backlight_SetGradual(uint16_t target, uint16_t time)
 }
 
 /**
-  * @brief  »ñÈ¡±³¹âÁÁ¶È
-  * @param  ÎŞ
-  * @retval µ±Ç°ÁÁ¶È(0~1000 -> 0~100%)
+  * @brief  è·å–èƒŒå…‰äº®åº¦
+  * @param  æ— 
+  * @retval å½“å‰äº®åº¦(0~1000 -> 0~100%)
   */
 uint16_t HAL::Backlight_GetValue()
 {
@@ -55,9 +56,9 @@ uint16_t HAL::Backlight_GetValue()
 }
 
 /**
-  * @brief  ÉèÖÃ±³¹âÁÁ¶È
-  * @param  val: ÁÁ¶È(0~1000 -> 0~100%)
-  * @retval ÎŞ
+  * @brief  è®¾ç½®èƒŒå…‰äº®åº¦
+  * @param  val: äº®åº¦(0~1000 -> 0~100%)
+  * @retval æ— 
   */
 void HAL::Backlight_SetValue(int16_t val)
 {
@@ -66,9 +67,9 @@ void HAL::Backlight_SetValue(int16_t val)
 }
 
 /**
-  * @brief  ±³¹âÇ¿ÖÆµãÁÁ
-  * @param  en: ±³¹âÊ¹ÄÜ
-  * @retval ÎŞ
+  * @brief  èƒŒå…‰å¼ºåˆ¶ç‚¹äº®
+  * @param  en: èƒŒå…‰ä½¿èƒ½
+  * @retval æ— 
   */
 void HAL::Backlight_ForceLit(bool en)
 {

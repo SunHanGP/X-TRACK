@@ -1,4 +1,4 @@
-/**
+﻿/**
  * @file lv_conf.h
  * Configuration file for v8.1.1-dev
  */
@@ -58,7 +58,7 @@
 #endif
 #if LV_MEM_CUSTOM == 0
     /*Size of the memory available for `lv_mem_alloc()` in bytes (>= 2kB)*/
-    #define LV_MEM_SIZE (72U * 1024U)          /*[bytes]*/
+    #define LV_MEM_SIZE (53U * 1024U)          /*[bytes]*/
 
     /*Set an address for the memory pool instead of allocating it as a normal array. Can be in external SRAM too.*/
     #define LV_MEM_ADR 0     /*0: unused*/
@@ -101,12 +101,7 @@
 #  define LV_TICK_CUSTOM_SYS_TIME_EXPR (millis())     /*Expression evaluating to current system time in ms*/
 #elif defined(_WIN32)
 #  define LV_TICK_CUSTOM_INCLUDE  <Windows.h>
-#  pragma comment(lib, "Winmm.lib")
-#  define LV_TICK_CUSTOM_SYS_TIME_EXPR (timeGetTime())
-#else
-#  define LV_TICK_CUSTOM_INCLUDE  <stdint.h>
-#  define LV_TICK_CUSTOM_SYS_TIME_EXPR (custom_tick_get())
-uint32_t custom_tick_get(void);
+#  define LV_TICK_CUSTOM_SYS_TIME_EXPR (GetTickCount())
 #endif
 #endif   /*LV_TICK_CUSTOM*/
 
